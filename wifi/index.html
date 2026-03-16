@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<title>TERMINAL_ACCESS_GRANTED</title>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500&display=swap');
+
+		body {
+			background-color: #050505;
+			color: #00ff41;
+			/* Vert Matrix */
+			font-family: 'Fira Code', monospace;
+			text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+		}
+
+		#console::-webkit-scrollbar {
+			display: none;
+		}
+
+		.blink {
+			animation: blink 1s step-end infinite;
+		}
+
+		@keyframes blink {
+			50% {
+				opacity: 0;
+			}
+		}
+
+		.glitch {
+			animation: glitch 0.3s linear infinite;
+		}
+
+		@keyframes glitch {
+			0% {
+				transform: skew(0.5deg);
+			}
+
+			50% {
+				transform: skew(-0.5deg);
+			}
+
+			100% {
+				transform: skew(0deg);
+			}
+		}
+	</style>
+</head>
+
+<body class="h-screen overflow-hidden p-6 text-xs md:text-sm">
+
+	<div
+		class="flex justify-between border-b border-[#00ff41] pb-2 mb-4 opacity-70 italic uppercase tracking-widest text-[10px]">
+		<div>System: Kernel_v4.2.0-root</div>
+		<div>Connection: Encrypted_WPA3_Bypass</div>
+	</div>
+
+	<div id="console" class="h-full overflow-y-auto space-y-1">
+	</div>
+
+	<div id="finalOverlay" class="fixed inset-0 bg-black/90 flex items-center justify-center z-50 hidden p-10">
+		<div
+			class="border-2 border-[#00ff41] p-10 bg-black shadow-[0_0_50px_rgba(0,255,65,0.2)] max-w-lg w-full text-center">
+			<h2 class="text-3xl font-bold mb-6 glitch">WIFI CRACKED SUCCESSFULLY</h2>
+			<div class="space-y-4 text-left border-t border-[#00ff41] pt-6">
+				<p class="text-white">SSID: <span class="text-[#00ff41]" id="res-ssid"></span></p>
+				<p class="text-white">IP_ADDR: <span class="text-[#00ff41]" id="res-ip"></span></p>
+				<p class="text-white italic">PASSWORD_FOUND: <span class="bg-[#00ff41] text-black px-2 font-black"
+						id="res-pwd"></span></p>
+			</div>
+			<button onclick="window.location.reload()"
+				class="mt-10 border border-[#00ff41] px-6 py-2 hover:bg-[#00ff41] hover:text-black transition uppercase font-bold">Relancer
+				le scan</button>
+		</div>
+	</div>
+
+	<script>
+		const consoleEl = document.getElementById('console');
+
+		const targets = [
+			{ ssid: "iPhone_de_Hache", pwd: "Miraculous_Ladybug_UwUer", ip: "192.168.1.42" },
+			{ ssid: "Livebox_Louvre", pwd: "louvre", ip: "192.168.0.12" },
+			{ ssid: "WiFi_Clem", pwd: "Maiday69", ip: "10.0.0.5" },
+			{ ssid: "PC_Portable_Matiboux", pwd: "polet-woof-woof-polet-621", ip: "192.168.1.101" },
+			{ ssid: "Box_Rokka", pwd: "Calamity4Ever", ip: "88.12.44.21" }
+		];
+
+		const techJargon = [
+			"Initializing handshake...", "Brute-forcing WPA3 salt...", "Injecting packets...",
+			"Intercepting SSID beacons...", "Capturing 4-way handshake...", "Parsing network architecture...",
+			"Bypassing firewalls...", "Downloading cloud_keys.db...", "Decrypting AES-256 blocks...",
+			"Exploiting buffer overflow...", "Root access: ATTEMPTING...", "Spoofing MAC address...",
+			"Decrypting salt hashes...", "Compromising router firmware...", "Fetching private_keys..."
+		];
+
+		let lineCount = 0;
+		const maxLines = 40; // Nombre de lignes avant le résultat final
+
+		function addLine() {
+			if (lineCount >= maxLines) {
+				showFinal();
+				return;
+			}
+
+			const line = document.createElement('p');
+			const timestamp = new Date().toLocaleTimeString('fr-FR', { hour12: false });
+			const msg = techJargon[Math.floor(Math.random() * techJargon.length)];
+
+			line.innerHTML = `<span class="opacity-40">[${timestamp}]</span> <span class="text-white">SCANNER_V8:</span> ${msg} ... <span class="text-teal-400">DONE</span>`;
+			consoleEl.appendChild(line);
+			consoleEl.scrollTop = consoleEl.scrollHeight;
+
+			lineCount++;
+			// Accélère un peu à la fin pour le suspense
+			const speed = lineCount > 30 ? 50 : Math.random() * 150 + 50;
+			setTimeout(addLine, speed);
+		}
+
+		function showFinal() {
+			// ON PIOCHE UNE CIBLE AU HASARD PARMI TA LISTE
+			const victim = targets[Math.floor(Math.random() * targets.length)];
+
+			document.getElementById('res-ssid').innerText = victim.ssid;
+			document.getElementById('res-ip').innerText = victim.ip;
+			document.getElementById('res-pwd').innerText = victim.pwd;
+
+			setTimeout(() => {
+				document.getElementById('finalOverlay').classList.remove('hidden');
+				// Petit son de réussite (si tu veux l'ajouter plus tard)
+				console.log("HACK_REUSSI_SUR_" + victim.ssid);
+			}, 800);
+		}
+
+		// Démarrage automatique
+		addLine();
+	</script>
+</body>
+
+</html>

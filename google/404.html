@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<title>Erreur 503 (Service Unavailable)</title>
+</head>
+
+<body class="bg-white font-sans flex items-center justify-center h-screen p-10">
+	<div class="max-w-lg w-full">
+		<h1 class="text-3xl font-bold mb-8 select-none">
+			<span class="text-gray-400">G</span><span class="text-gray-400">o</span><span
+				class="text-gray-400">o</span><span class="text-gray-400">o</span><span
+				class="text-gray-400">g</span><span class="text-gray-400">l</span><span class="text-gray-400">e</span>
+		</h1>
+
+		<div class="space-y-4">
+			<p class="text-lg"><b>503.</b> <span class="text-gray-600">L'erreur de fou !</span></p>
+			<p class="text-sm leading-relaxed text-gray-800">
+				Le service que vous tentez de consulter est temporairement surchargé par un <b>trafic volumineux de
+					dossiers</b> concernant votre entourage.
+			</p>
+
+			<div id="errorBox"
+				class="bg-gray-50 border border-dashed border-gray-300 p-4 font-mono text-xs text-red-600 mt-6">
+				CODE_ERROR: [SEARCH_OVERLOAD_RELOU_DETECTION]
+			</div>
+
+			<p class="text-sm text-gray-500 mt-6">Déso pas déso c'est tout ce qu'on sait de cette erreur.</p>
+
+			<div class="pt-6 border-t mt-6 flex space-x-4">
+				<button onclick="changeError()" class="text-blue-600 font-bold hover:underline">Réessayer</button>
+				<button onclick="window.location.href='index.html'"
+					class="text-blue-600 font-bold hover:underline">Retour à l'accueil</button>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		const messages = [
+			"ERREUR: Trop de sel détecté dans la requête.",
+			"TRAFIC VOLUMINEUX: 450 potes sont déjà en train de rire de vous.",
+			"CRITICAL_FAILURE: Le dossier est trop lourd pour votre connexion ADSL.",
+			"TIMEOUT: L'individu ciblé est trop moche pour être affiché en HD.",
+			"HTTP 418: I'm a teapot (and you're a loser).",
+			"SECURITY: Accès refusé par le protocole 'Anti-Dossier-V3'."
+		];
+
+		function changeError() {
+			const box = document.getElementById('errorBox');
+			box.innerText = messages[Math.floor(Math.random() * messages.length)];
+			box.classList.add('animate-ping');
+			setTimeout(() => box.classList.remove('animate-ping'), 200);
+		}
+	</script>
+</body>
+
+</html>

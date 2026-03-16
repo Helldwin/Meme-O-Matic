@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<title>Gooogle Search Results</title>
+</head>
+
+<body class="bg-white font-sans">
+	<header class="border-b p-4 flex items-center space-x-8 shadow-sm sticky top-0 bg-white z-10">
+		<h1 class="text-2xl font-black tracking-tighter cursor-pointer" onclick="window.location.href='index.html'">
+			<span class="text-[#4285f4]">G</span><span class="text-[#ea4335]">o</span><span
+				class="text-[#fbbc05]">o</span><span class="text-[#4285f4]">o</span><span
+				class="text-[#34a853]">g</span><span class="text-[#ea4335]">l</span><span
+				class="text-[#4285f4]">e</span>
+		</h1>
+		<div class="flex-grow max-w-2xl border rounded-full px-5 py-2 flex items-center shadow-md">
+			<span id="queryDisplay" class="flex-grow"></span>
+			<span class="text-blue-500">🔍</span>
+		</div>
+	</header>
+
+	<main class="max-w-3xl ml-44 mt-8 px-4">
+		<p class="text-sm text-gray-500 mb-6">Environ 1 résultat trouvé (0,02 secondes)</p>
+
+		<div class="mb-10 animate-fade-in">
+			<p class="text-[12px] text-gray-700">https://www.le-monde-du-dossier.fr > archives</p>
+			<a href="404.html" class="text-xl text-[#1a0dab] hover:underline">
+				ALERTE : Un dossier compromettant sur <span class="friendName"></span> vient de fuiter
+			</a>
+			<p class="text-sm text-[#4d5156] mt-1 leading-relaxed">
+				Le gouvernement français a confirmé que la recherche pour "<span class="searchQuery text-bold"></span>"
+				mène directement à la preuve que <span class="friendName"></span> est officiellement recherché pour
+				"dégénéré aggravé". Cliquez pour voir la photo.
+			</p>
+		</div>
+
+		<div class="mb-10 opacity-70">
+			<p class="text-[12px] text-gray-700">https://fr.wikipedia.org > wiki > Dégen</p>
+			<a href="404.html" class="text-xl text-[#1a0dab] hover:underline cursor-pointer font-medium mt-1">
+				Dégénéré — Wikipédia
+			</a>
+			<p class="text-sm text-[#4d5156] mt-1">
+				Un Dégénéré est un trait de caractère fréquent chez <span class="friendName"></span>. En 2026, il a
+				été classé "Meilleur espoir" dans cette catégorie par ses propres amis.
+			</p>
+		</div>
+	</main>
+
+	<script>
+		const params = new URLSearchParams(window.location.search);
+		const q = params.get('q') || "Ma recherche";
+		const potes = ["HacheCordage", "Helldwin", "Clemastro", "Rokka"];
+		const pote = potes[Math.floor(Math.random() * potes.length)];
+
+		document.getElementById('queryDisplay').innerText = q;
+		document.querySelectorAll('.searchQuery').forEach(el => el.innerText = q);
+		document.querySelectorAll('.friendName').forEach(el => el.innerText = pote);
+	</script>
+</body>
+
+</html>

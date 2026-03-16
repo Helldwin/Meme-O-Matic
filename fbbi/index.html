@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<title>THIS DOMAIN HAS BEEN SEIZED</title>
+	<style>
+		body {
+			background-color: #000;
+			color: #fff;
+			font-family: 'Times New Roman', serif;
+		}
+
+		.seal-glow {
+			filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.5));
+		}
+
+		@keyframes blink {
+
+			0%,
+			100% {
+				opacity: 1;
+			}
+
+			50% {
+				opacity: 0.3;
+			}
+		}
+
+		.warning-blink {
+			animation: blink 1s infinite;
+		}
+	</style>
+</head>
+
+<body
+	class="flex flex-col items-center justify-center min-h-screen p-6 text-center border-[20px] border-red-900 uppercase">
+
+	<div class="flex space-x-12 mb-10">
+		<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Seal_of_the_Federal_Bureau_of_Investigation.svg/2048px-Seal_of_the_Federal_Bureau_of_Investigation.svg.png"
+			class="h-40 seal-glow" alt="FBI">
+	</div>
+
+	<h1 class="text-5xl font-black text-white bg-red-700 px-10 py-4 mb-8 tracking-tighter">
+		THIS DOMAIN HAS BEEN SEIZED
+	</h1>
+
+	<div class="max-w-4xl space-y-6 text-xl leading-tight border-2 border-red-700 p-8 bg-zinc-900">
+		<p>This domain name has been seized by the Federal Bureau of Investigation in accordance with a seizure warrant
+			issued by the United States District Court.</p>
+
+		<p class="text-red-500 font-bold warning-blink">Violation of Federal Law: Excessive Meme Toxicity & Illegal
+			Trash-Talking.</p>
+
+		<div class="bg-black p-4 font-mono text-sm border border-red-900 text-left">
+			<p>USER_IP: <span id="userIp" class="text-white">Tracing...</span></p>
+			<p>LOCATION: <span id="userLoc" class="text-white">Triangulating...</span></p>
+			<p>OFFENSE_LEVEL: CRITICAL (MEME_LEVEL_99)</p>
+			<p>STATUS: AGENTS DISPATCHED</p>
+		</div>
+
+		<div class="text-3xl font-black mt-10">
+			TIME UNTIL INTERVENTION: <span id="timer" class="text-red-600">05:00</span>
+		</div>
+	</div>
+
+	<footer class="mt-12 opacity-50 text-xs">
+		<p>© 2026 DEPARTMENT OF JUSTICE - CYBER CRIME TASK FORCE</p>
+		<p>DO NOT CLOSE THIS TAB - COOPERATION IS MANDATORY</p>
+	</footer>
+
+	<script>
+		// Simulation d'IP (On récupère la vraie IP via un service gratuit)
+		fetch('https://api.ipify.org?format=json')
+			.then(res => res.json())
+			.then(data => {
+				document.getElementById('userIp').innerText = data.ip;
+				document.getElementById('userLoc').innerText = "CALCULATED_TARGET_ACQUIRED";
+			})
+			.catch(() => {
+				document.getElementById('userIp').innerText = "192.168.1." + Math.floor(Math.random() * 255);
+			});
+
+		// Compte à rebours
+		let time = 300;
+		const timerEl = document.getElementById('timer');
+		setInterval(() => {
+			if (time > 0) time--;
+			let mins = Math.floor(time / 60);
+			let secs = time % 60;
+			timerEl.innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+			if (time < 10) timerEl.classList.add('animate-ping');
+		}, 1000);
+
+		// Bloquer la sortie (un peu)
+		window.onbeforeunload = function () {
+			return "Attempting to flee federal agents? Your IP has been logged.";
+		};
+	</script>
+</body>
+
+</html>

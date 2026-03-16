@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<title>Suivi de colis | LaPose</title>
+</head>
+
+<body class="bg-gray-100 font-sans">
+	<header class="bg-[#ffcc00] p-4 shadow-md flex justify-between items-center px-6">
+		<div class="font-black text-2xl text-[#003366]">LA POSE</div>
+		<div class="text-xs font-bold text-[#003366] uppercase">Professionnels ▾</div>
+	</header>
+
+	<main class="max-w-2xl mx-auto mt-10 p-4">
+		<div class="bg-white rounded-lg shadow-xl overflow-hidden">
+			<div class="p-6 border-b border-gray-100">
+				<h1 class="text-xl font-bold text-gray-800">Suivre un envoi</h1>
+				<p class="text-sm text-gray-500">N° de suivi : <span class="font-mono font-bold">6A123456789FR</span>
+				</p>
+			</div>
+
+			<div class="p-8 bg-orange-50">
+				<div class="flex items-center space-x-4">
+					<div
+						class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white text-2xl animate-bounce">
+						⚠️</div>
+					<div>
+						<p class="font-bold text-orange-800 text-lg">Envoi bloqué en douane</p>
+						<p class="text-sm text-orange-700">Motif : Contenu non déclaré ou suspect</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="p-8 space-y-8">
+				<div class="relative pl-8 border-l-2 border-green-500 space-y-10">
+					<div class="relative">
+						<div class="absolute -left-[41px] top-1 w-4 h-4 bg-green-500 rounded-full"></div>
+						<p class="font-bold text-sm">Plateforme Grand Ouest</p>
+						<p class="text-xs text-gray-500 italic">Votre colis a été scanné pour inspection.</p>
+					</div>
+					<div class="relative opacity-50">
+						<div
+							class="absolute -left-[41px] top-1 w-4 h-4 bg-gray-300 rounded-full text-[10px] flex items-center justify-center">
+							?</div>
+						<p class="font-bold text-sm">Destinataire final</p>
+						<p class="text-xs text-gray-500 italic font-bold text-red-600">ACTION REQUISE : Paiement de la
+							taxe "Dildo Encombrant" (438,21€)</p>
+					</div>
+				</div>
+
+				<div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+					<p class="text-xs font-bold uppercase text-gray-400 mb-2">Description du contenu (Rayons X) :</p>
+					<p class="text-sm font-medium italic text-gray-700">"Bad Dragon Custom, signé par le PDG de la
+						boîte"</p>
+				</div>
+
+				<button onclick="alert('Paiement refusé : Votre compte est déjà trop à découvert.')"
+					class="w-full bg-[#003366] text-white py-4 rounded font-bold hover:bg-blue-900 transition shadow-lg">RÉGULARISER
+					LES FRAIS DE DOUANE</button>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

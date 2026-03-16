@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<title>TypingTest Pro - Mesurez votre WPM</title>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+		body {
+			background-color: #323437;
+			/* Gris MonkeyType */
+			color: #d1d0c5;
+			font-family: 'JetBrains Mono', monospace;
+		}
+
+		.cursor-custom {
+			border-left: 2px solid #e2b714;
+			animation: blink 1s infinite;
+		}
+
+		@keyframes blink {
+			50% {
+				opacity: 0;
+			}
+		}
+
+		.active-word {
+			color: #e2b714;
+			text-shadow: 0 0 5px rgba(226, 183, 20, 0.3);
+		}
+	</style>
+</head>
+
+<body class="h-screen flex flex-col items-center justify-center p-6 select-none">
+
+	<div class="w-full max-w-4xl flex justify-between mb-20 opacity-40 text-sm font-bold tracking-widest uppercase">
+		<div class="flex space-x-8">
+			<span>punctation</span>
+			<span>numbers</span>
+			<span class="text-[#e2b714]">time</span>
+		</div>
+		<div class="flex space-x-8">
+			<span>wpm: <span id="wpm">0</span></span>
+			<span>acc: 100%</span>
+		</div>
+	</div>
+
+	<main class="w-full max-w-4xl relative">
+		<div id="target-text" class="text-3xl leading-relaxed opacity-20 absolute inset-0 pointer-events-none">
+			Le succès n'est pas final, l'échec n'est pas fatal : c'est le courage de continuer qui compte vraiment dans
+			la vie de tous les jours...
+		</div>
+
+		<div id="display-text" class="text-3xl leading-relaxed break-words min-h-[150px]">
+			<span class="cursor-custom">&nbsp;</span>
+		</div>
+
+		<input type="text" id="ghost-input" class="opacity-0 absolute inset-0 cursor-default" autofocus>
+	</main>
+
+	<footer class="mt-24 text-xs opacity-30 flex items-center space-x-4">
+		<div class="bg-[#444] px-2 py-1 rounded">tab</div>
+		<span>+</span>
+		<div class="bg-[#444] px-2 py-1 rounded">enter</div>
+		<span>- restart test</span>
+	</footer>
+
+	<script>
+		const input = document.getElementById('ghost-input');
+		const display = document.getElementById('display-text');
+		const wpmEl = document.getElementById('wpm');
+
+		// --- LES PHRASES TROLL ---
+		const trolls = [
+			"SUITE A LA VISITE DE CE SITE JE PENSE QUE JE VAIS OFFRIR UN APPLE VISION A TOUT MES AMIS. ",
+			"J'ADORE MANGER LES BROCOLIS TROP CUITS ET JE PORTE DES CHAUSSETTES DANS MES SANDALES LE DIMANCHE APRÈS-MIDI DEVANT TPMP. ",
+			"JE NE SAIS ABSOLUMENT PAS TAPER AU CLAVIER ET JE REGARDE MES DOIGTS COMME UN ENFANT DE QUATRE ANS QUI DÉCOUVRE LE FEU. ",
+			"MON HISTORIQUE DE RECHERCHE GOOGLE EST TELLEMENT GÉNANT QUE MÊME LE FBI A DÉCIDÉ DE FERMER LES YEUX POUR NE PAS SOUFFRIR. ",
+			"PEPPER EST LE DIABLE",
+			"UN SEUL DIEU EXISTE DANS CE MONDE, C'EST LE GRAND 2GETHER",
+			"SALUT CLEM, JE SAIS PAS COMMENT TE L'AVOUER MAIS TU ES MA MAID PRÉFÉRÉE SI TU VOIS CE QUE JE VEUX DIRE <3",
+		];
+
+		let selectedTroll = trolls[Math.floor(Math.random() * trolls.length)];
+		let index = 0;
+		let startTime = null;
+
+		input.addEventListener('input', (e) => {
+			if (!startTime) startTime = Date.now();
+
+			// On ignore l'input réel, on avance dans notre troll
+			const val = e.target.value;
+			input.value = ""; // On vide pour pouvoir continuer à trigger l'event
+
+			if (index < selectedTroll.length) {
+				// On construit le texte
+				const typed = selectedTroll.substring(0, index + 1);
+				display.innerHTML = `<span class="active-word">${typed}</span><span class="cursor-custom">&nbsp;</span>`;
+				index++;
+
+				// Simulation de WPM
+				const seconds = (Date.now() - startTime) / 1000;
+				const currentWpm = Math.round((index / 5) / (seconds / 60));
+				wpmEl.innerText = currentWpm > 200 ? 200 : currentWpm;
+			}
+		});
+
+		// Garder le focus
+		document.addEventListener('click', () => input.focus());
+		window.onload = () => input.focus();
+	</script>
+</body>
+
+</html>

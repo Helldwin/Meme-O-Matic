@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<title>Madame Irma - Voyance Stellaire</title>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+		body {
+			background: radial-gradient(circle at center, #2e1065 0%, #020617 100%);
+			font-family: 'Cinzel', serif;
+			color: #e9d5ff;
+		}
+
+		.crystal-ball-container {
+			filter: drop-shadow(0 0 50px rgba(168, 85, 247, 0.6));
+		}
+
+		@keyframes rotate-stars {
+			from {
+				transform: rotate(0deg);
+			}
+
+			to {
+				transform: rotate(360deg);
+			}
+		}
+
+		.stars {
+			background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+			animation: rotate-stars 200s linear infinite;
+		}
+
+		.loading-text::after {
+			content: '...';
+			animation: dots 1.5s steps(5, end) infinite;
+		}
+
+		@keyframes dots {
+
+			0%,
+			20% {
+				content: '.';
+			}
+
+			40% {
+				content: '..';
+			}
+
+			60% {
+				content: '...';
+			}
+		}
+	</style>
+</head>
+
+<body class="h-screen flex items-center justify-center overflow-hidden">
+
+	<div class="stars absolute inset-0 opacity-30 pointer-events-none"></div>
+
+	<main class="relative z-10 text-center p-6 max-w-lg">
+		<div id="intro">
+			<h1 class="text-3xl md:text-5xl font-bold mb-4 tracking-widest uppercase">L'Oracle de l'Infini</h1>
+			<p class="text-purple-300 italic mb-12">Posez votre main sur l'écran et libérez votre esprit...</p>
+
+			<div class="crystal-ball-container relative w-64 h-64 mx-auto mb-12 cursor-pointer group"
+				onclick="startReading()">
+				<div
+					class="absolute inset-0 bg-gradient-to-tr from-purple-900 via-purple-500 to-blue-300 rounded-full opacity-80 group-hover:scale-105 transition-transform duration-700 blur-sm">
+				</div>
+				<div class="absolute inset-4 bg-white/20 rounded-full backdrop-blur-sm border border-white/30"></div>
+				<div class="absolute top-8 left-12 w-12 h-6 bg-white/40 rounded-full blur-md -rotate-45"></div>
+
+				<div class="absolute inset-0 flex items-center justify-center text-6xl animate-pulse">🔮</div>
+			</div>
+
+			<p class="text-sm uppercase tracking-tighter opacity-50">Cliquez sur la boule pour initier la transe</p>
+		</div>
+
+		<div id="reading" class="hidden">
+			<p class="loading-text text-2xl italic mb-8">Interrogation des astres</p>
+			<div class="space-y-4 text-left font-sans text-sm bg-black/40 p-6 rounded-xl border border-purple-500/30">
+				<p id="log1" class="opacity-0 transition-opacity duration-700">✨ Alignement de Jupiter avec votre
+					karma...</p>
+				<p id="log2" class="opacity-0 transition-opacity duration-700">🕯️ Analyse des dossiers accumulés dans
+					l'au-delà...</p>
+				<p id="log3" class="opacity-0 transition-opacity duration-700">👁️ Vision floue d'une situation
+					embarrassante...</p>
+			</div>
+		</div>
+
+		<div id="final" class="hidden animate-bounce">
+			<h2 class="text-4xl font-bold text-white mb-6">La Prophétie :</h2>
+			<div class="bg-white/10 p-8 rounded-full border-2 border-purple-400 backdrop-blur-xl">
+				<p id="prediction" class="text-2xl font-bold text-purple-200"></p>
+			</div>
+			<button onclick="window.location.reload()"
+				class="mt-12 text-xs uppercase tracking-widest border-b border-purple-400 pb-1">Consulter à
+				nouveau</button>
+		</div>
+	</main>
+
+	<script>
+		const predictions = [
+			"Je vois... je vois que tu es sur le point de regretté d'avoir cliqué sur un lien inutile.",
+			"Les astres disent que tu es officiellement la personne la plus 'à droite' de ce groupe.",
+			"Une grande opportunité s'offre à toi : celle de payer ta tournée ce soir.",
+			"Attention : Quelqu'un dans cette pièce sait que tu es Furry",
+			"Mercure rétrograde : c'est pour ça que toutes tes blagues tombent à l'eau en ce moment.",
+			"L'oracle est formel : Ton futur est brillant, mais ton historique de recherche est terrifiant."
+		];
+
+		function startReading() {
+			document.getElementById('intro').classList.add('hidden');
+			document.getElementById('reading').classList.remove('hidden');
+
+			// Séquence de logs
+			setTimeout(() => document.getElementById('log1').classList.remove('opacity-0'), 1000);
+			setTimeout(() => document.getElementById('log2').classList.remove('opacity-0'), 2500);
+			setTimeout(() => document.getElementById('log3').classList.remove('opacity-0'), 4000);
+
+			// Révélation
+			setTimeout(() => {
+				document.getElementById('reading').classList.add('hidden');
+				document.getElementById('final').classList.remove('hidden');
+				document.getElementById('prediction').innerText = predictions[Math.floor(Math.random() * predictions.length)];
+			}, 6000);
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<title>Mon Espace Client - MaBanque</title>
+	<style>
+		body {
+			background-color: #f8fafc;
+			font-family: 'Inter', sans-serif;
+		}
+
+		.gradient-bank {
+			background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+		}
+	</style>
+</head>
+
+<body class="antialiased">
+
+	<header class="gradient-bank text-white p-6 pb-24 shadow-lg">
+		<div class="max-w-md mx-auto flex justify-between items-center">
+			<div class="flex items-center space-x-2">
+				<div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center font-bold">B</div>
+				<span class="font-bold tracking-tight">BankRoute<span
+						class="text-blue-400 italic text-xs ml-1">Premium</span></span>
+			</div>
+			<div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-xl">👤</div>
+		</div>
+	</header>
+
+	<main class="max-w-md mx-auto -mt-16 px-4 pb-10">
+		<div class="bg-white rounded-3xl p-8 shadow-2xl border border-gray-100 text-center relative overflow-hidden">
+			<p class="text-gray-500 text-sm font-medium uppercase tracking-widest">Solde Disponible</p>
+			<h1 id="solde" class="text-5xl font-black text-red-600 my-4 transition-all duration-500">-1 482,50 €</h1>
+			<div
+				class="flex justify-center space-x-2 text-xs font-bold py-1 px-3 bg-red-100 text-red-700 rounded-full w-fit mx-auto animate-pulse">
+				⚠️ DÉCOUVERT NON AUTORISÉ
+			</div>
+		</div>
+
+		<div class="flex justify-between mt-8 px-2">
+			<button class="flex flex-col items-center space-y-2 opacity-50 cursor-not-allowed">
+				<div class="w-12 h-12 bg-white rounded-2xl shadow-md flex items-center justify-center text-2xl">➕</div>
+				<span class="text-[10px] font-bold uppercase">Ajouter</span>
+			</button>
+			<button class="flex flex-col items-center space-y-2 opacity-50 cursor-not-allowed">
+				<div class="w-12 h-12 bg-white rounded-2xl shadow-md flex items-center justify-center text-2xl">💸</div>
+				<span class="text-[10px] font-bold uppercase">Virer</span>
+			</button>
+			<button class="flex flex-col items-center space-y-2 opacity-50 cursor-not-allowed">
+				<div class="w-12 h-12 bg-white rounded-2xl shadow-md flex items-center justify-center text-2xl">📊</div>
+				<span class="text-[10px] font-bold uppercase">Stats</span>
+			</button>
+		</div>
+
+		<div class="mt-10">
+			<h3 class="font-bold text-gray-800 mb-4 px-2">Dernières Opérations</h3>
+			<div id="transaction-list" class="space-y-3">
+			</div>
+		</div>
+
+		<button onclick="window.location.reload()"
+			class="w-full mt-10 py-4 text-sm font-bold text-gray-400 uppercase tracking-widest border-2 border-dashed border-gray-200 rounded-2xl hover:bg-gray-50">
+			Actualiser les transactions
+		</button>
+	</main>
+
+	<script>
+		// --- CONFIGURATION DES TRANSACTIONS TROLL ---
+		const transactions = [
+			{ label: "Achat : 50kg de Mayo Premium", price: -124.90, icon: "🥚" },
+			{ label: "Abonnement : Fan Club de Rachida Dati", price: -45.00, icon: "👵" },
+			{ label: "Paiement : Amende CPF TKT", price: -135.00, icon: "👮" },
+			{ label: "Achat : Stage 'Une soirée au bar'", price: -250.00, icon: "🍻" },
+			{ label: "Apple Store : 1000 gemmes Candy Crush", price: -99.99, icon: "🍎" },
+			{ label: "Achat : Quelques nom de domaines", price: -500.00, icon: "📁" },
+			{ label: "Achat : Fleur Cancan de collection (Occasion)", price: -89.00, icon: "💇‍♂️" }
+		];
+
+		// Mélanger et afficher les transactions
+		const container = document.getElementById('transaction-list');
+		const shuffled = transactions.sort(() => 0.5 - Math.random());
+
+		let currentSolde = -1482.50;
+
+		shuffled.slice(0, 5).forEach(t => {
+			const div = document.createElement('div');
+			div.className = "bg-white p-4 rounded-2xl flex items-center justify-between shadow-sm border border-gray-50 transform transition hover:scale-[1.02]";
+			div.innerHTML = `
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-2xl">${t.icon}</div>
+                    <div>
+                        <p class="font-bold text-gray-800 text-sm">${t.label}</p>
+                        <p class="text-xs text-gray-400">Aujourd'hui, 14:32</p>
+                    </div>
+                </div>
+                <span class="font-bold text-red-500">${t.price.toFixed(2)} €</span>
+            `;
+			container.appendChild(div);
+		});
+
+		// Animation de changement de solde pour stresser
+		setTimeout(() => {
+			const soldeEl = document.getElementById('solde');
+			soldeEl.innerText = "-1 582,49 €";
+			soldeEl.classList.add('scale-110');
+			setTimeout(() => soldeEl.classList.remove('scale-110'), 200);
+		}, 3000);
+	</script>
+</body>
+
+</html>

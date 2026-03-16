@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<title>Gooogle</title>
+</head>
+
+<body class="flex flex-col h-screen font-sans text-sm">
+	<nav class="flex justify-end items-center p-4 space-x-4">
+		<a href="#" class="hover:underline">Gmail</a>
+		<a href="#" class="hover:underline">Images</a>
+		<button
+			class="bg-[#1a73e8] text-white px-6 py-2 rounded font-bold hover:shadow-md transition">Connexion</button>
+	</nav>
+
+	<main class="flex-grow flex flex-col items-center mt-28 px-4">
+		<h1 class="text-8xl font-black tracking-tighter mb-8 select-none">
+			<span class="text-[#4285f4]">G</span><span class="text-[#ea4335]">o</span><span
+				class="text-[#fbbc05]">o</span><span class="text-[#4285f4]">o</span><span
+				class="text-[#34a853]">g</span><span class="text-[#ea4335]">l</span><span
+				class="text-[#4285f4]">e</span>
+		</h1>
+
+		<form onsubmit="search(event)" class="w-full max-w-[584px]">
+			<div
+				class="flex items-center border border-gray-200 hover:shadow-md focus-within:shadow-md px-5 py-3 rounded-full transition group">
+				<svg class="h-5 w-5 text-gray-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+						d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+				</svg>
+				<input type="text" id="q" class="flex-grow outline-none text-lg" autocomplete="off">
+				<svg class="h-5 w-5 text-gray-400 ml-3" viewBox="0 0 24 24" fill="currentColor">
+					<path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z" />
+					<path
+						d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z" />
+				</svg>
+			</div>
+
+			<div class="flex justify-center space-x-3 mt-8">
+				<button type="submit"
+					class="bg-[#f8f9fa] border border-[#f8f9fa] py-2 px-4 rounded hover:border-[#dadce0] hover:shadow-sm">Recherche
+					Gooogle</button>
+				<button type="button" id="lucky"
+					class="bg-[#f8f9fa] border border-[#f8f9fa] py-2 px-4 rounded hover:border-[#dadce0] hover:shadow-sm transition-all duration-75">J'ai
+					de la chance</button>
+			</div>
+		</form>
+	</main>
+
+	<script>
+		function search(e) {
+			e.preventDefault();
+			const q = document.getElementById('q').value;
+			window.location.href = `results.html?q=${encodeURIComponent(q)}`;
+		}
+
+		// Le bouton qui s'enfuit
+		const lucky = document.getElementById('lucky');
+		lucky.onmouseover = () => {
+			lucky.style.transform = `translate(${Math.random() * 200 - 100}px, ${Math.random() * 100 - 50}px)`;
+		};
+
+		document.getElementById('lucky').onclick = () => {
+			window.location.href = '404.html';
+		};
+	</script>
+</body>
+
+</html>

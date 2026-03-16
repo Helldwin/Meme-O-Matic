@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Meme-O-Matic</title>
+	<script>
+		// Liste de tes dossiers de pranks
+		const pranks = [
+			'colis',
+			'google',
+			'impots',
+			'tinder',
+			'loto',
+			'update',
+			'fbbi',
+			'banque',
+			'wifi',
+			'clavier'
+		];
+
+		// Choix aléatoire
+		const randomPrank = pranks[Math.floor(Math.random() * pranks.length)];
+
+		// Redirection vers le dossier choisi
+		window.location.href = "./" + randomPrank + "/";
+	</script>
+</head>
+
+<body style="background: black;"></body>
+
+</html>

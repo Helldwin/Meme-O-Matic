@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<title>Netflix - Accueil</title>
+	<style>
+		body {
+			background-color: #141414;
+			color: white;
+			font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		}
+
+		.netflix-sans {
+			font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		}
+
+		.hero-shadow {
+			box-shadow: inset 0 -100px 100px -10px #141414;
+		}
+	</style>
+</head>
+
+<body class="netflix-sans antialiased overflow-x-hidden">
+
+	<nav
+		class="fixed top-0 inset-x-0 h-16 bg-gradient-to-b from-black/80 to-transparent flex items-center justify-between px-12 z-50">
+		<div class="flex items-center space-x-8">
+			<h1 class="text-red-600 text-3xl font-black tracking-tighter">NERFLIX</h1>
+			<div class="flex space-x-5 text-sm text-gray-200">
+				<a href="#" class="font-bold">Accueil</a>
+				<a href="#" class="opacity-70">Séries</a>
+				<a href="#" class="opacity-70">Films</a>
+			</div>
+		</div>
+		<div class="w-8 h-8 bg-blue-600 rounded"></div>
+	</nav>
+
+	<header class="relative h-[80vh] w-full flex items-end pb-20 hero-shadow">
+		<img src="https://api.qrserver.com/v1/create-qr-code/?size=1080x1080&data=https://www.google.com/search?q=pourquoi+hache+est+un+applezouz"
+			class="absolute inset-0 w-full h-full object-cover grayscale opacity-20" alt="Hero Background">
+
+		<div class="relative z-10 px-12 max-w-2xl space-y-4">
+			<h2 class="text-6xl font-black text-white tracking-tighter">L'INCROYABLE DESTIN DE <span
+					class="text-red-500">HACHE</span></h2>
+			<p class="text-lg text-gray-200">Plongez dans le quotidien fascinant d'un homme qui a décidé de consacrer sa
+				vie à l'achat de produits Apple. Un documentaire exclusif et terrifiant.</p>
+			<div class="flex space-x-3 pt-4">
+				<button class="bg-white text-black px-8 py-2.5 rounded font-bold text-lg hover:bg-white/80">►
+					Lecture</button>
+				<button class="bg-gray-500/50 text-white px-8 py-2.5 rounded font-bold text-lg hover:bg-gray-500/80">ⓘ
+					Plus d'infos</button>
+			</div>
+		</div>
+	</header>
+	<br><br><br>
+	<main class="px-12 -mt-10 pb-20 space-y-12">
+		<section>
+			<h3 class="text-xl font-bold text-gray-200 mb-4 tracking-tight">Recommandé pour vous (basé sur votre niveau
+				de cringe)</h3>
+			<div id="catalog-row-1" class="flex gap-2 overflow-x-scroll pb-4 scrollbar-hide">
+			</div>
+		</section>
+	</main>
+
+	<script>
+		const fictiveShows = [
+			{ title: "Hache fait son cinéma", img: "1.jpg", desc: "Saison 1" },
+			{ title: "En quête du giveaway", img: "2.jpg", desc: "Saison 3" },
+			{ title: "Les Furry de 2GETHER", img: "3.jpg", desc: "Documentaire" },
+			{ title: "Pouleto Man", img: "4.jpg", desc: "Film" },
+			{ title: "Moi, Rokka et Mati", img: "5.jpg", desc: "Série Limitée" },
+			{ title: "Et si on allez en Suisse ?", img: "6.jpg", desc: "Téléréalité" }
+		];
+
+		const container = document.getElementById('catalog-row-1');
+
+		fictiveShows.forEach(show => {
+			const card = document.createElement('div');
+			card.className = "relative flex-none w-48 aspect-[2/3] bg-zinc-800 rounded-md shadow-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:z-10 group";
+
+			card.innerHTML = `
+                <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(show.title)}&background=random&color=fff&size=512" class="w-full h-full object-cover opacity-60 group-hover:opacity-100" alt="${show.title}">
+                <div class="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-black to-transparent text-white">
+                    <p class="text-sm font-bold truncate">${show.title}</p>
+                    <p class="text-xs text-red-500">${show.desc}</p>
+                </div>
+            `;
+			container.appendChild(card);
+		});
+	</script>
+</body>
+
+</html>

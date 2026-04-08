@@ -1,20 +1,44 @@
-<!DOCTYPE html>
+
+
+		<!DOCTYPE html>
 <html lang="fr">
-
 <head>
-	<meta charset="UTF-8">
-	<script src="https://cdn.tailwindcss.com"></script>
-	<title>Meme-O-Matic | Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Meme-O-Matic | Command Center</title>
+    <style>
+        body { background-color: #0a0a0c; }
+        .glitch-text:hover {
+            text-shadow: 2px 0 #ff0000, -2px 0 #00ff00;
+        }
+        .card-attack {
+            background: linear-gradient(145deg, #111114, #1a1a1e);
+            border: 1px solid #2d2d35;
+        }
+        .card-attack:hover {
+            border-color: #ef4444;
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+        }
+    </style>
 </head>
+<body class="text-slate-400 font-mono p-4 md:p-10">
 
-<body class="bg-slate-900 text-slate-300 font-mono p-8">
-	<div class="max-w-4xl mx-auto">
-		<h1 class="text-4xl font-black text-white mb-2 tracking-tighter">MEME-O-MATIC <span
-				class="text-red-500 text-sm">v2.0</span></h1>
-		<p class="mb-10 text-slate-500 border-b border-slate-800 pb-4">Listing de toutes les conneries faite dans le
-			temps par Helldwin.</p>
+    <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <header class="mb-12 border-b border-red-900/30 pb-6 flex justify-between items-end">
+            <div>
+                <h1 class="text-white text-4xl font-black italic tracking-tighter glitch-text">MEME-O-MATIC <span class="text-red-600">v2.0</span></h1>
+                <p class="text-xs text-red-500 uppercase tracking-widest mt-2 animate-pulse font-bold">● Système d'ingénierie sociale actif</p>
+            </div>
+            <div class="hidden md:block text-right text-[10px] text-slate-600">
+                <p>OS: TROLL_LINUX 4.2</p>
+                <p>IP: DETECTED_BY_TARGET</p>
+            </div>
+        </header>
 
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Grille de Catégories -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 			<a href="../banque/"
 				class="p-4 border border-slate-700 hover:border-blue-500 hover:bg-blue-500/10 transition group">
 				<span class="text-blue-500 font-bold block">01. BankRoute Premium</span>
@@ -80,8 +104,45 @@
 				<span class="text-blue-500 font-bold block">13. Wifi</span>
 				<span class="text-xs">Le meilleur hacker de wifi du MONDE</span>
 			</a>
-		</div>
-	</div>
-</body>
+			<a href="../critique/"
+				class="p-4 border border-slate-700 hover:border-blue-500 hover:bg-blue-500/10 transition group">
+				<span class="text-blue-500 font-bold block">14. Les Critiques douteuses</span>
+				<span class="text-xs">Le Cinéma selon HacheCordage</span>
+			</a>
+			<a href="../netflix/"
+				class="p-4 border border-slate-700 hover:border-blue-500 hover:bg-blue-500/10 transition group">
+				<span class="text-blue-500 font-bold block">15. Nerflix</span>
+				<span class="text-xs">La meilleure platforme de SVOD</span>
+			</a>
+			<a href="../iq/"
+				class="p-4 border border-slate-700 hover:border-blue-500 hover:bg-blue-500/10 transition group">
+				<span class="text-blue-500 font-bold block">16. Test de QI</span>
+				<span class="text-xs">Découvrez votre quotient intellectuel</span>
+			</a>
+			<a href="../ios/"
+				class="p-4 border border-slate-700 hover:border-blue-500 hover:bg-blue-500/10 transition group">
+				<span class="text-blue-500 font-bold block">17. Mise à jour logicielle | iOS</span>
+				<span class="text-xs">Mettez à jour votre appareil iOS</span>
+			</a>
+			<a href="../tg/"
+				class="p-4 border border-slate-700 hover:border-blue-500 hover:bg-blue-500/10 transition group">
+				<span class="text-blue-500 font-bold block">18. Telegrave</span>
+				<span class="text-xs">Communiquez avec vos amis en toute sécurité</span>
+			</a>
+			<a href="../gaming/"
+				class="p-4 border border-slate-700 hover:border-blue-500 hover:bg-blue-500/10 transition group">
+				<span class="text-blue-500 font-bold block">19. Gaming</span>
+				<span class="text-xs">Plongez dans l'univers des jeux vidéo</span>
+			</a>
 
+		</div>
+
+        <!-- Footer Footer -->
+        <footer class="mt-20 text-center border-t border-slate-900 pt-6">
+            <p class="text-[10px] text-slate-700">NE PAS UTILISER À DES FINS MALVEILLANTES (Sauf si c'est drôle)</p>
+            <p class="text-[9px] text-slate-800 mt-2 italic">Toutes les données affichées sont simulées. L'honneur de votre pote, lui, est réellement en danger.</p>
+        </footer>
+    </div>
+
+</body>
 </html>

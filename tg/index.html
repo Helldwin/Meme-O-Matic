@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Telegrave Web | Synchronisation</title>
+</head>
+<body class="bg-[#F6F6F6] font-sans antialiased h-screen flex flex-col items-center justify-center p-6 text-center">
+
+    <div class="max-w-sm w-full space-y-8 animate-fade-in">
+        <div class="w-24 h-24 bg-[#54a9eb] rounded-full flex items-center justify-center shadow-2xl mx-auto">
+            <svg class="w-14 h-14 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
+        </div>
+
+        <h1 class="text-3xl font-extrabold text-gray-900 tracking-tighter">Synchronisation de Telegrave Web</h1>
+        
+        <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
+            <p id="status-text" class="text-sm font-medium text-gray-600 mb-6">Chargement de vos conversations secrètes...</p>
+            
+            <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden relative shadow-inner">
+                <div id="progress-bar" class="bg-[#54a9eb] h-full rounded-full transition-all duration-300" style="width: 1%"></div>
+            </div>
+            
+            <p id="data-text" class="text-xs font-mono text-gray-400 mt-2">0 Mo / ??? Mo</p>
+        </div>
+
+        <button onclick="window.location.reload()" class="mt-8 text-xs uppercase tracking-widest text-[#54a9eb] font-bold">Relancer la synchronisation</button>
+    </div>
+
+    <script>
+        let pct = 1;
+        let data = 0;
+        const bar = document.getElementById('progress-bar');
+        const status = document.getElementById('status-text');
+        const dataText = document.getElementById('data-text');
+
+        function update() {
+            if (pct < 99) {
+                // Progression réaliste mais bloquée à 99%
+                pct += Math.random() * (pct > 80 ? 0.2 : 3);
+                data += Math.random() * 50;
+                
+                if (pct > 99) pct = 99;
+
+                bar.style.width = pct + '%';
+                dataText.innerText = `${data.toFixed(1)} Mo / 14 502 Mo`; // Grosse somme pour stresser
+
+                // Changement de statut de temps en temps
+                if (pct > 20 && pct < 40) status.innerText = "Téléchargement des 'photos confidentielles'";
+                if (pct > 60 && pct < 80) status.innerText = "Finalisation de la synchronisation des VOD interdites";
+                if (pct > 95) status.innerText = "Finalisation du chargement (En raison du contenu scanné par notre service, votre compte va être suspendu)";
+
+                setTimeout(update, Math.random() * 1000 + 300);
+            }
+        }
+
+        update();
+    </script>
+</body>
+</html>

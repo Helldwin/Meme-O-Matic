@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Institut du Cerveau - Test de QI</title>
+    <style>
+        body { background-color: #F0F2F5; font-family: 'Times New Roman', Times, serif; color: #1C1E21; }
+        .academic { font-family: 'Garamond', serif; }
+    </style>
+</head>
+<body class="academic antialiased h-screen flex items-center justify-center p-6 text-center">
+
+    <main id="main-content" class="bg-white p-12 rounded-3xl shadow-2xl max-w-lg w-full">
+        <h1 class="text-3xl font-bold mb-4 tracking-tight text-gray-950 uppercase">Institut de Métaphysique</h1>
+        <p class="text-sm text-gray-600 mb-10 italic border-b pb-4">Analyse Cognitive Standardisée (ACS v4.2)</p>
+        
+        <div id="quiz-container" class="space-y-6 text-left">
+            </div>
+
+        <button id="submit-btn" onclick="checkAnswers()" class="mt-10 bg-black text-white px-10 py-3 rounded-full font-bold uppercase tracking-widest hover:bg-gray-800 hidden">Soumettre mes réponses</button>
+    </main>
+
+    <script>
+        const questionsList = [
+            { q: "Quel mot ou nom n'est pas considéré comme un mot ou nom lié à un dégen ?", a: ["FURRY", "UwU", "Miraculous", "Citron", "Rachida Datti"] },
+            { q: "Quel mot défini le mieux HacheCordage ?", a: ["Cringe", "Miraculous Ladybug", "Apple", "H"] },
+            { q: "Si un groupe de personnes ragent sur un mec sur Rocket League ou Chain Together qui est forcément le fautif ?", a: ["Les 4 personnes", "Clemastro", "Helldwin", "Matiboux", "HacheCordage"] }
+        ];
+
+        // Tirage aléatoire de 3 questions (simplifié pour l'exemple)
+        const selectedQuestions = questionsList.sort(() => 0.5 - Math.random());
+
+        const container = document.getElementById('quiz-container');
+        selectedQuestions.forEach((q, i) => {
+            const div = document.createElement('div');
+            div.innerHTML = `
+                <p class="font-bold text-gray-900 mb-2">${i+1}. ${q.q}</p>
+                <div class="space-y-2">
+                    ${q.a.map(a => `<label class="flex items-center gap-2 text-sm"><input type="radio" name="q${i}" class="form-radio text-black"> ${a}</label>`).join('')}
+                </div>
+            `;
+            container.appendChild(div);
+        });
+
+        // Afficher le bouton quand tout est répondu (simplifié)
+        document.getElementById('submit-btn').classList.remove('hidden');
+
+        function checkAnswers() {
+            const main = document.getElementById('main-content');
+            main.innerHTML = `
+                <h1 class="text-3xl font-bold mb-4 tracking-tight text-gray-950 uppercase">Résultat de l'Analyse</h1>
+                <p class="text-sm text-gray-600 mb-10 italic border-b pb-4">Analyse Cognitive Standardisée (ACS v4.2)</p>
+                
+                <div class="bg-red-50 p-6 rounded-2xl shadow-inner border border-red-100 text-center">
+                    <p class="text-5xl font-black text-red-700 my-4 tracking-tighter transition-all duration-300">SCORE: 1</p>
+                    <p class="text-xs text-red-900">QI détecté équivalent à la température ambiante de votre chambre</p>
+                </div>
+
+                <div class="text-[120px] leading-none mb-10 mt-6 animate-pulse">🦪</div>
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Félicitations !</h2>
+                <p class="text-lg leading-relaxed text-gray-700 italic">Vous avez le QI d'une huître. C'est officiellement le score le plus bas à ce jour.</p>
+                
+                <button onclick="window.location.reload()" class="mt-12 text-xs uppercase tracking-widest border-b border-gray-400 pb-1">Repasser le test (pour se ridiculiser à nouveau)</button>
+            `;
+        }
+    </script>
+</body>
+</html>

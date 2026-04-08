@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Steum Support | Compte</title>
+    <style>
+        body { background-color: #1b2838; font-family: 'Motiva Sans', sans-serif; color: #c6d4df; }
+        .gradient-steam { background: linear-gradient(135deg, #1b2838 0%, #171a21 100%); }
+        .alert-bar { border-top: 5px solid #e1000f; }
+    </style>
+</head>
+<body class="antialiased overflow-hidden">
+
+    <header class="bg-[#171a21] p-4 flex justify-between items-center shadow-lg sticky top-0 z-50">
+        <div class="text-[#c6d4df] font-bold text-lg flex items-center gap-2">
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-3.082 17.037l2.22 1.343v1.306l-2.22-1.343c-.457-.279-.6-.874-.321-1.332s.874-.6 1.332-.321l2.22 1.343zm5.082 1.963v-1.306l2.22 1.343c.457.279.321 1.332-.136 1.611s-.874-.321-1.332-.321l2.22-1.343zm-4-4v1.306l-2.22-1.343c-.457-.279-.6-.874-.321-1.332s.874-.6 1.332-.321l2.22 1.343zm7-4v1.306l-2.22-1.343c-.457-.279-.321 1.332-.136 1.611s-.874-.321-1.332-.321l2.22-1.343zm-2.082-2.037l-2.22-1.343v-1.306l2.22 1.343c.457.279.321 1.332-.136 1.611s-.874-.321-1.332-.321l2.22-1.343zm2.082 1.306l-2.22-1.343v-1.306l2.22 1.343c.457.279.321 1.332-.136 1.611s-.874-.321-1.332-.321l2.22 1.343zM12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10-10-4.477-10-10 4.477-10 10-10zm0 4.5c.828 0 1.5.672 1.5 1.5s-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5.672-1.5 1.5-1.5zm0-2.5c-.828 0-1.5.672-1.5 1.5s-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5.672-1.5 1.5-1.5z"></path></svg>
+            SUPPORT STEUM
+        </div>
+        <div class="text-xs text-[#c6d4df] uppercase">FRANÇAIS ▾</div>
+    </header>
+
+    <main class="max-w-4xl mx-auto p-6 mt-10">
+        <div class="bg-[#1b2838] p-8 alert-bar shadow-2xl rounded-b-lg">
+            
+            <div class="flex justify-between items-start mb-10 pb-6 border-b border-[#2a475e]">
+                <h1 class="text-3xl font-black text-white tracking-tighter">Votre compte a été suspendu</h1>
+                <div class="text-right text-xs text-[#c6d4df]">
+                    <p>N° Dossier : <span class="font-bold">VAC-882-99</span></p>
+                    <p>Date : Aujourd'hui</p>
+                </div>
+            </div>
+            
+            <div class="space-y-6 text-[#c6d4df] leading-relaxed">
+                <p>
+                    Monsieur/Madame,<br><br>
+                    Après examen de votre activité récente sur la plateforme Steum, nos services ont détecté une **anomalie critique** concernant votre compte.
+                </p>
+
+                <div class="bg-[#e1000f] text-white p-6 rounded-lg text-center shadow-lg relative">
+                    <p class="text-sm font-bold uppercase tracking-widest">Motif du bannissement :</p>
+                    <div class="text-3xl font-black my-4 tracking-tighter">
+                        TENTATIVE DE TRICHE SUR <span class="text-white">"CS:GO 2"</span>
+                    </div>
+                    <p class="text-xs italic text-red-100">Le Pepsi consommé aujourd'hui est supérieur à celui autorisé pour nos joueurs</p>
+                </div>
+
+                <div class="flex flex-col space-y-3">
+                    <button onclick="window.location.reload()" class="bg-[#171a21] text-white py-4 font-bold text-lg hover:bg-black transition shadow-lg">
+                        CONTROLLER L'ERREUR (VAC Support)
+                    </button>
+                    <button class="bg-white text-[#171a21] py-3 text-sm font-bold opacity-60 cursor-not-allowed">
+                        Acheter un autre jeu (Indisponible)
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <p class="text-center text-[#2a475e] text-[10px] mt-10 uppercase tracking-widest">© Valve Corporation. L'abus de triche est dangereux pour votre réputation.</p>
+    </main>
+
+</body>
+</html>
